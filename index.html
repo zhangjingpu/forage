@@ -33,64 +33,95 @@
 
 <p>Norch is an experimental search engine built with Node.js and LevelDB. The name Norch is a contraction of " <strong>No</strong> de Sea <strong>rch</strong> "</p>
 
-<h3>
-<a name="homepage" class="anchor" href="#homepage"><span class="octicon octicon-link"></span></a>Homepage</h3>
+<h2>
+<a name="homepage" class="anchor" href="#homepage"><span class="octicon octicon-link"></span></a>Homepage</h2>
 
 <p><a href="http://fergiemcdowall.github.io/Norch">http://fergiemcdowall.github.io/Norch</a> </p>
 
-<h3>
-<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h3>
+<h2>
+<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
 
 <p>Currently Norch is best obtained using Git. Run the following command to clone the git repository for Norch:</p>
 
 <pre><code>git clone https://github.com/fergiemcdowall/Norch
 </code></pre>
 
-<h3>
-<a name="installing-norch" class="anchor" href="#installing-norch"><span class="octicon octicon-link"></span></a>Installing Norch</h3>
+<h2>
+<a name="installing-norch" class="anchor" href="#installing-norch"><span class="octicon octicon-link"></span></a>Installing Norch</h2>
+
+<p><em>Note: for the purposes of accessability, this doc assumes that Norch is being installed locally on your own computer
+(localhost). Once Norch is rolled out on to remote servers, the hostname on all URLs should be updated accordingly.</em></p>
 
 <p>Norch has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Norch can be installed by running the following command which will download and install all dependencies:</p>
 
 <pre><code>npm install
 </code></pre>
 
-<p>If everything went to plan- Norch chould now be installed on your machine.</p>
+<p>If everything went to plan- Norch should now be installed on your machine</p>
+
+<h1>
+<a name="operation" class="anchor" href="#operation"><span class="octicon octicon-link"></span></a>Operation</h1>
 
 <h2>
-<a name="operation" class="anchor" href="#operation"><span class="octicon octicon-link"></span></a>Operation</h2>
-
-<h3>
-<a name="start-your-norch-server" class="anchor" href="#start-your-norch-server"><span class="octicon octicon-link"></span></a>Start your Norch server</h3>
+<a name="start-your-norch-server" class="anchor" href="#start-your-norch-server"><span class="octicon octicon-link"></span></a>Start your Norch server</h2>
 
 <p>Navigate to the directory where you installed Norch and type</p>
 
 <pre><code>node norch-server
 </code></pre>
 
-<p>W00t! Norch is now running locally on your machine. The default port of 3000 can be modified if required.</p>
+<p>Hurrah! Norch is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
+and marvel. The default port of 3000 can be modified if required.</p>
 
 <h2>
 <a name="indexing" class="anchor" href="#indexing"><span class="octicon octicon-link"></span></a>Indexing</h2>
 
-<p>Once you have set up Norch, you can get some content into it. Norch comes with some test data in the directory "testdata"</p>
+<p>Once you have set up Norch, you can get some content into it. Norch comes with a JSONified version of the venerable
+Reuters-21578 test dataset in the directory "testdata". To index this data cd into the directory "testdata" and run
+the following command (note that one data file can contain an arbitralily large number of documents)</p>
 
-<p>cd into the directory "testdata" and run the following command to index 1000 documents of the reuters test data set (note that one data file can contain an arbitralily large number of documents)</p>
-
-<pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer
+<pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer --form filterOn=places,topics,organisations
 </code></pre>
 
-<p>Norch indexes data that is in the format</p>
+<p>If you are on a unix machine (including mac OSX), you can also run /index.sh in order to read in the entire dataset
+of 21 batch files.</p>
+
+<p>Generally Norch indexes data that is in the format</p>
 
 <div class="highlight"><pre><span class="p">{</span>
-    <span class="s1">'doc1'</span><span class="o">:</span><span class="p">{</span><span class="s1">'title'</span><span class="o">:</span><span class="s1">'A really interesting document'</span><span class="p">,</span>
-            <span class="s1">'body'</span><span class="o">:</span><span class="s1">'This is a really interesting document'</span><span class="p">},</span>
-    <span class="s1">'doc2'</span><span class="o">:</span><span class="p">{</span><span class="s1">'title'</span><span class="o">:</span><span class="s1">'Another interesting document'</span><span class="p">,</span>
-            <span class="s1">'body'</span><span class="o">:</span><span class="s1">'This is another really interesting document that is a bit different'</span><span class="p">}</span>
+  <span class="s1">'doc1'</span><span class="o">:</span><span class="p">{</span>
+    <span class="s1">'title'</span><span class="o">:</span><span class="s1">'A really interesting document'</span><span class="p">,</span>
+    <span class="s1">'body'</span><span class="o">:</span><span class="s1">'This is a really interesting document'</span><span class="p">,</span>
+    <span class="s1">'metadata'</span><span class="o">:</span><span class="p">[</span><span class="s1">'red'</span><span class="p">,</span> <span class="s1">'potato'</span><span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s1">'doc2'</span><span class="o">:</span><span class="p">{</span>
+    <span class="s1">'title'</span><span class="o">:</span><span class="s1">'Another interesting document'</span><span class="p">,</span>
+    <span class="s1">'body'</span><span class="o">:</span><span class="s1">'This is another really interesting document that is a bit different'</span><span class="p">,</span>
+    <span class="s1">'metadata'</span><span class="o">:</span><span class="p">[</span><span class="s1">'yellow'</span><span class="p">,</span> <span class="s1">'potato'</span><span class="p">]</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
+<p>That is to say an object containing a list of key:values where the key is the document ID and the values are a futher
+list of key:values that define the fields. Fields can be called anything other than 'ID'. Field values can be either
+strings or simple arrays.</p>
+
 <h2>
-<a name="searching" class="anchor" href="#searching"><span class="octicon octicon-link"></span></a>Searching</h2>
+<a name="indexing-parameters" class="anchor" href="#indexing-parameters"><span class="octicon octicon-link"></span></a>Indexing parameters</h2>
+
+<h3>
+<a name="filteron" class="anchor" href="#filteron"><span class="octicon octicon-link"></span></a>filterOn</h3>
+
+<p>Example</p>
+
+<pre><code> --form filterOn=places,topics,organisations
+</code></pre>
+
+<p>filterOn is an array of fields that can be used to filter search results. Each defined field must be an array field in
+the document. filterOn will not work with string fields.</p>
+
+<h1>
+<a name="searching" class="anchor" href="#searching"><span class="octicon octicon-link"></span></a>Searching</h1>
 
 <p>Search is available on <a href="http://localhost.com:3000/search">http://localhost.com:3000/search</a></p>
 
@@ -128,14 +159,14 @@
 
 <p>Usage:</p>
 
-<pre><code>filter=&lt;field to filter on&gt;
+<pre><code>filter[&lt;filter field&gt;][]=&lt;value&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain">http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain</a></p>
+<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq</a></p>
 
 <p>Multiple filters:</p>
 
-<p><a href="http://localhost:3000/search?q=oil&amp;f=places,topics,organisations&amp;filter=topics:plywood,crude;places:indonesia">http://localhost:3000/search?q=oil&amp;f=places,topics,organisations&amp;filter=topics:plywood,crude;places:indonesia</a></p>
+<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;filter%5Btopics%5D%5B%5D=acq&amp;filter%5Bplaces%5D%5B%5D=ussr">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq&amp;filter[places][]=ussr</a></p>
 
 <h3>
 <a name="offset" class="anchor" href="#offset"><span class="octicon octicon-link"></span></a>offset</h3>
@@ -169,10 +200,40 @@
 
 <p>Usage:</p>
 
-<pre><code>weight=&lt;field name&gt;:&lt;weight (factor)&gt;
+<pre><code>weight[&lt;field name&gt;][]:&lt;weight (factor)&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight=title:10">http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight=title:10</a></p>
+<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight%5Btitle%5D%5B%5D=10">http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight[title][]=10</a></p>
+
+<p>Multiple field weights:</p>
+
+<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3000/search?q=moscow&amp;facets=topicss&amp;filter=topics:grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
+
+<h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Search-index is released under the MIT license:</p>
+
+<p>Copyright (c) 2013 Fergus McDowall</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/fergiemcdowall">fergiemcdowall</a></p>
