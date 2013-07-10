@@ -46,8 +46,9 @@
 <li>Stopword removal</li>
 <li>Faceting</li>
 <li>Filtering</li>
-<li>Relevance weighting (tf-idf)</li>
+<li>Fielded search</li>
 <li>Field weighting</li>
+<li>Relevance weighting (tf-idf)</li>
 <li>Paging (offset and resultset length)</li>
 </ul><h2>
 <a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
@@ -146,7 +147,7 @@ the document. filterOn will not work with string fields.</p>
 <h3>
 <a name="q" class="anchor" href="#q"><span class="octicon octicon-link"></span></a>q</h3>
 
-<p><strong>(Required)</strong> For "query". The search term.</p>
+<p><strong>(Required)</strong> For "query". The search term. Asterisk (<code>*</code>) returns everything.</p>
 
 <p>Usage:</p>
 
@@ -154,6 +155,16 @@ the document. filterOn will not work with string fields.</p>
 </code></pre>
 
 <p><a href="http://localhost:3000/search?q=moscow">http://localhost:3000/search?q=moscow</a></p>
+
+<h3>
+<a name="searchfields" class="anchor" href="#searchfields"><span class="octicon octicon-link"></span></a>searchFields</h3>
+
+<p>Search on specified fields. Ignore text that exists in other fields.</p>
+
+<pre><code>searchFields=&lt;comma seperated lists of fields to search in&gt;
+</code></pre>
+
+<p><a href="http://localhost:3000/search?q=plans&amp;searchFields%5B%5D=body">http://localhost:3000/search?q=plans&amp;searchFields[]=body</a></p>
 
 <h3>
 <a name="facets" class="anchor" href="#facets"><span class="octicon octicon-link"></span></a>facets</h3>
@@ -231,8 +242,6 @@ the document. filterOn will not work with string fields.</p>
 following:</p>
 
 <ul>
-<li>
-<strong>Indexing:</strong> Heavy indexing (&gt;200 docs per second) is generally OK, but the server will briefly "pause" shortly afterwards</li>
 <li>
 <strong>The GUI (scrolling)</strong> the default GUI is very much a temporary measure. The instant search function is flaky and currently
 there is no support for scrolling</li>
