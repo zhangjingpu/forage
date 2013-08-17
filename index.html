@@ -50,6 +50,7 @@
 <li>Field weighting</li>
 <li>Relevance weighting (tf-idf)</li>
 <li>Paging (offset and resultset length)</li>
+<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-norch">virtual-norch</a>)</li>
 </ul><h2>
 <a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
 
@@ -88,6 +89,21 @@
 
 <p>Hurrah! Norch is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
 and marvel. The default port of 3000 can be modified if required.</p>
+
+<h3>
+<a name="startup-options" class="anchor" href="#startup-options"><span class="octicon octicon-link"></span></a>Startup options</h3>
+
+<pre><code>  $ node norch --help
+
+  Usage: norch [options]
+
+  Options:
+
+      -h, --help         output usage information
+      -V, --version      output the version number
+      -p, --port &lt;port&gt;  specify the port, defaults to 3000
+      -h, --home &lt;home&gt;  specify the home directory, stores the index and settings, defaults to ./norch
+</code></pre>
 
 <h2>
 <a name="indexing" class="anchor" href="#indexing"><span class="octicon octicon-link"></span></a>Indexing</h2>
@@ -242,9 +258,9 @@ the document. filterOn will not work with string fields.</p>
 following:</p>
 
 <ul>
-<li>
-<strong>The GUI (scrolling)</strong> the default GUI is very much a temporary measure. The instant search function is flaky and currently
-there is no support for scrolling</li>
+<li><p><strong>The GUI (scrolling)</strong> the default GUI is very much a temporary measure. The instant search function is flaky and currently
+there is no support for scrolling</p></li>
+<li><p><strong>Out of memory error under heavy indexing</strong> right now (august 2013) there seems to be a low level issue that is causing memory to spike drastically. This can be worked around by restarting the server.</p></li>
 </ul><p>Indexing and GUI is the current focus of development</p>
 
 <h1>
