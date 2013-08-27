@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Norch by fergiemcdowall</title>
+    <title>Forage by fergiemcdowall</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,28 +15,30 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Norch</h1>
-        <p>Norch is an experimental search engine based on Node.js and LevelDB</p>
+        <h1>Forage</h1>
+        <p>Forage is an experimental search engine based on Node.js and LevelDB</p>
 
-        <p class="view"><a href="https://github.com/fergiemcdowall/norch">View the Project on GitHub <small>fergiemcdowall/norch</small></a></p>
+        <p class="view"><a href="https://github.com/fergiemcdowall/forage">View the Project on GitHub <small>fergiemcdowall/forage</small></a></p>
 
 
         <ul>
-          <li><a href="https://github.com/fergiemcdowall/norch/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/fergiemcdowall/norch/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/fergiemcdowall/norch">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
         <h1>
-<a name="norch" class="anchor" href="#norch"><span class="octicon octicon-link"></span></a>Norch</h1>
+<a name="forage" class="anchor" href="#forage"><span class="octicon octicon-link"></span></a>Forage</h1>
 
-<p>Norch is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and
-<a href="https://github.com/fergiemcdowall/search-index">Search-index</a>. The name Norch is a contraction of " <strong>No</strong> de Sea <strong>rch</strong> "</p>
+<p>Forage is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and
+<a href="https://github.com/fergiemcdowall/search-index">Search-index</a>.</p>
 
-<p><strong>Homepage:</strong> <a href="http://www.norch.net">http://www.norch.net</a></p>
+<p><strong>Homepage:</strong> <a href="http://www.forage.net">http://www.forage.net</a></p>
 
-<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/norch">https://github.com/fergiemcdowall/norch</a></p>
+<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/forage">https://github.com/fergiemcdowall/forage</a></p>
+
+<p><strong>Latest stable release:</strong> <a href="https://github.com/fergiemcdowall/forage/releases/tag/v0.2.1">https://github.com/fergiemcdowall/forage/releases/tag/v0.2.1</a></p>
 
 <h1>
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
@@ -50,65 +52,69 @@
 <li>Field weighting</li>
 <li>Relevance weighting (tf-idf)</li>
 <li>Paging (offset and resultset length)</li>
-<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-norch">virtual-norch</a>)</li>
+<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
 </ul><h2>
 <a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
 
 <p><strong>git:</strong></p>
 
-<pre><code>git clone https://github.com/fergiemcdowall/norch
+<pre><code>git clone https://github.com/fergiemcdowall/forage
+git checkout v0.2.1
 </code></pre>
+
+<p>Drop the <code>git checkout</code> if you want the latest and greatest (and possible broken) version</p>
 
 <p><strong>http:</strong></p>
 
-<p><a href="http://fergiemcdowall.github.io/norch">http://fergiemcdowall.github.io/norch</a></p>
+<pre><code>https://github.com/fergiemcdowall/forage/releases/tag/v0.2.1
+</code></pre>
 
 <h2>
-<a name="installing-norch" class="anchor" href="#installing-norch"><span class="octicon octicon-link"></span></a>Installing Norch</h2>
+<a name="installing-forage" class="anchor" href="#installing-forage"><span class="octicon octicon-link"></span></a>Installing Forage</h2>
 
-<p>Norch has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Norch can be installed by running the following command which will download and install all dependencies:</p>
+<p>Forage has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
 
 <pre><code>npm install
 </code></pre>
 
-<p>If everything went to plan- Norch should now be installed on your machine</p>
+<p>If everything went to plan- Forage should now be installed on your machine</p>
 
 <h1>
 <a name="operation" class="anchor" href="#operation"><span class="octicon octicon-link"></span></a>Operation</h1>
 
-<p><em>Note: for the purposes of accessability, this doc assumes that Norch is being installed locally on your own computer
-(localhost). Once Norch is rolled out on to remote servers, the hostname on all URLs should be updated accordingly.</em></p>
+<p><em>Note: for the purposes of accessability, this doc assumes that Forage is being installed locally on your own computer
+(localhost). Once Forage is rolled out on to remote servers, the hostname on all URLs should be updated accordingly.</em></p>
 
 <h2>
-<a name="start-your-norch-server" class="anchor" href="#start-your-norch-server"><span class="octicon octicon-link"></span></a>Start your Norch server</h2>
+<a name="start-your-forage-server" class="anchor" href="#start-your-forage-server"><span class="octicon octicon-link"></span></a>Start your Forage server</h2>
 
-<p>Navigate to the directory where you installed Norch and type</p>
+<p>Navigate to the directory where you installed Forage and type</p>
 
-<pre><code>node norch
+<pre><code>node forage
 </code></pre>
 
-<p>Hurrah! Norch is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
+<p>Hurrah! Forage is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
 and marvel. The default port of 3000 can be modified if required.</p>
 
 <h3>
 <a name="startup-options" class="anchor" href="#startup-options"><span class="octicon octicon-link"></span></a>Startup options</h3>
 
-<pre><code>  $ node norch --help
+<pre><code>  $ node forage --help
 
-  Usage: norch [options]
+  Usage: forage [options]
 
   Options:
 
       -h, --help         output usage information
       -V, --version      output the version number
       -p, --port &lt;port&gt;  specify the port, defaults to 3000
-      -h, --home &lt;home&gt;  specify the home directory, stores the index and settings, defaults to ./norch
+      -h, --home &lt;home&gt;  specify the home directory, stores the index and settings, defaults to ./forage
 </code></pre>
 
 <h2>
 <a name="indexing" class="anchor" href="#indexing"><span class="octicon octicon-link"></span></a>Indexing</h2>
 
-<p>Once you have set up Norch, you can get some content into it. Norch comes with a JSONified version of the venerable
+<p>Once you have set up Forage, you can get some content into it. Forage comes with a JSONified version of the venerable
 Reuters-21578 test dataset in the directory "testdata". To index this data cd into the directory "testdata" and run
 the following command (note that one data file can contain an arbitralily large number of documents)</p>
 
@@ -118,7 +124,7 @@ the following command (note that one data file can contain an arbitralily large 
 <p>If you are on a unix machine (including mac OSX), you can also run /index.sh in order to read in the entire dataset
 of 21 batch files.</p>
 
-<p>Generally Norch indexes data that is in the format</p>
+<p>Generally Forage indexes data that is in the format</p>
 
 <div class="highlight"><pre><span class="p">{</span>
   <span class="s1">'doc1'</span><span class="o">:</span><span class="p">{</span>
@@ -254,7 +260,7 @@ the document. filterOn will not work with string fields.</p>
 <h1>
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known Issues</h1>
 
-<p>Norch is new software and as such should be regarded as a work in progress. Administrators should be aware of the
+<p>Forage is new software and as such should be regarded as a work in progress. Administrators should be aware of the
 following:</p>
 
 <ul>
@@ -266,7 +272,7 @@ there is no support for scrolling</p></li>
 <h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
-<p>Norch is released under the MIT license:</p>
+<p>Forage is released under the MIT license:</p>
 
 <p>Copyright (c) 2013 Fergus McDowall</p>
 
