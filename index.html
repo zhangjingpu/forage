@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Forage by fergiemcdowall</title>
+    <title>Forage.js by fergiemcdowall</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -15,8 +15,8 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Forage</h1>
-        <p>Forage is an experimental search engine based on Node.js and LevelDB</p>
+        <h1>Forage.js</h1>
+        <p>Forage.js is an experimental search engine based on Node.js and LevelDB</p>
 
         <p class="view"><a href="https://github.com/fergiemcdowall/forage">View the Project on GitHub <small>fergiemcdowall/forage</small></a></p>
 
@@ -29,9 +29,9 @@
       </header>
       <section>
         <h1>
-<a name="forage" class="anchor" href="#forage"><span class="octicon octicon-link"></span></a>Forage</h1>
+<a name="foragejs" class="anchor" href="#foragejs"><span class="octicon octicon-link"></span></a>Forage.js</h1>
 
-<p>Forage is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and
+<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and
 <a href="https://github.com/fergiemcdowall/search-index">Search-index</a>.</p>
 
 <p><strong>Homepage:</strong> <a href="http://www.foragejs.net">http://www.foragejs.net</a></p>
@@ -61,20 +61,20 @@
 <p><strong>git:</strong></p>
 
 <pre><code>git clone https://github.com/fergiemcdowall/forage
-git checkout v0.2.1
+git checkout v0.2.3
 </code></pre>
 
 <p>Drop the <code>git checkout</code> if you want the latest and greatest (and possible broken) version</p>
 
 <p><strong>http:</strong></p>
 
-<pre><code>https://github.com/fergiemcdowall/forage/releases/tag/v0.2.1
+<pre><code>https://github.com/fergiemcdowall/forage/releases/tag/v0.2.3
 </code></pre>
 
 <h2>
-<a name="installing-forage" class="anchor" href="#installing-forage"><span class="octicon octicon-link"></span></a>Installing Forage</h2>
+<a name="installing-foragejs" class="anchor" href="#installing-foragejs"><span class="octicon octicon-link"></span></a>Installing Forage.js</h2>
 
-<p>Forage has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
+<p>Forage.js has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
 
 <pre><code>npm install
 </code></pre>
@@ -88,7 +88,7 @@ git checkout v0.2.1
 (localhost). Once Forage is rolled out on to remote servers, the hostname on all URLs should be updated accordingly.</em></p>
 
 <h2>
-<a name="start-your-forage-server" class="anchor" href="#start-your-forage-server"><span class="octicon octicon-link"></span></a>Start your Forage server</h2>
+<a name="start-your-foragejs-server" class="anchor" href="#start-your-foragejs-server"><span class="octicon octicon-link"></span></a>Start your Forage.js server</h2>
 
 <p>Navigate to the directory where you installed Forage and type</p>
 
@@ -116,8 +116,8 @@ and marvel. The default port of 3000 can be modified if required.</p>
 <h2>
 <a name="indexing" class="anchor" href="#indexing"><span class="octicon octicon-link"></span></a>Indexing</h2>
 
-<p>Once you have set up Forage, you can get some content into it. Forage comes with a JSONified version of the venerable
-Reuters-21578 test dataset in the directory "testdata". To index this data cd into the directory "testdata" and run
+<p>Once you have set up Forage.js, you can get some content into it. Forage comes with a JSONified version of the venerable
+Reuters-21578 test dataset in the directory <code>test/testdata</code>. To index this data cd into the directory <code>test/testdata</code> and run
 the following command (note that one data file can contain an arbitralily large number of documents)</p>
 
 <pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer --form filterOn=places,topics,organisations
@@ -128,7 +128,7 @@ of 21 batch files.</p>
 
 <p>Generally Forage indexes data that is in the format</p>
 
-<div class="highlight"><pre><span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
   <span class="s1">'doc1'</span><span class="o">:</span><span class="p">{</span>
     <span class="s1">'title'</span><span class="o">:</span><span class="s1">'A really interesting document'</span><span class="p">,</span>
     <span class="s1">'body'</span><span class="o">:</span><span class="s1">'This is a really interesting document'</span><span class="p">,</span>
@@ -274,7 +274,7 @@ there is no support for scrolling</p></li>
 <h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
-<p>Forage is released under the MIT license:</p>
+<p>Forage.js is released under the MIT license:</p>
 
 <p>Copyright (c) 2013 Fergus McDowall</p>
 
