@@ -42,6 +42,10 @@
 
 <p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/fergiemcdowall/forage"><img src="https://secure.travis-ci.org/fergiemcdowall/forage.png" alt="Build Status"></a></p>
 
+<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
+
+<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm-dl/forage.png" alt="NPM"></a></p>
+
 <h1>
 <a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
 
@@ -56,27 +60,11 @@
 <li>Paging (offset and resultset length)</li>
 <li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
 </ul><h2>
-<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
-
-<p><strong>git:</strong></p>
-
-<pre><code>git clone https://github.com/fergiemcdowall/forage
-git checkout v0.2.3
-</code></pre>
-
-<p>Drop the <code>git checkout</code> if you want the latest and greatest (and possible broken) version</p>
-
-<p><strong>http:</strong></p>
-
-<pre><code>https://github.com/fergiemcdowall/forage/releases/tag/v0.2.3
-</code></pre>
-
-<h2>
 <a name="installing-foragejs" class="anchor" href="#installing-foragejs"><span class="octicon octicon-link"></span></a>Installing Forage.js</h2>
 
 <p>Forage.js has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
 
-<pre><code>npm install
+<pre><code>$ npm install forage
 </code></pre>
 
 <p>If everything went to plan- Forage should now be installed on your machine</p>
@@ -85,14 +73,16 @@ git checkout v0.2.3
 <a name="operation" class="anchor" href="#operation"><span class="octicon octicon-link"></span></a>Operation</h1>
 
 <p><em>Note: for the purposes of accessability, this doc assumes that Forage is being installed locally on your own computer
-(localhost). Once Forage is rolled out on to remote servers, the hostname on all URLs should be updated accordingly.</em></p>
+(localhost). Once Forage is rolled out on to remote servers, the
+hostname on all URLs should be updated accordingly. Command line
+commands are denoted by the prefix <code>$</code> which should not be typed in</em></p>
 
 <h2>
 <a name="start-your-foragejs-server" class="anchor" href="#start-your-foragejs-server"><span class="octicon octicon-link"></span></a>Start your Forage.js server</h2>
 
-<p>Navigate to the directory where you installed Forage and type</p>
+<p>Type</p>
 
-<pre><code>node forage
+<pre><code>$ forage
 </code></pre>
 
 <p>Hurrah! Forage is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
@@ -101,7 +91,7 @@ and marvel. The default port of 3000 can be modified if required.</p>
 <h3>
 <a name="startup-options" class="anchor" href="#startup-options"><span class="octicon octicon-link"></span></a>Startup options</h3>
 
-<pre><code>  $ node forage --help
+<pre><code>  $ forage --help
 
   Usage: forage [options]
 
@@ -110,7 +100,6 @@ and marvel. The default port of 3000 can be modified if required.</p>
       -h, --help         output usage information
       -V, --version      output the version number
       -p, --port &lt;port&gt;  specify the port, defaults to 3000
-      -h, --home &lt;home&gt;  specify the home directory, stores the index and settings, defaults to ./forage
 </code></pre>
 
 <h2>
@@ -268,7 +257,14 @@ following:</p>
 <ul>
 <li><p><strong>The GUI (scrolling)</strong> the default GUI is very much a temporary measure. The instant search function is flaky and currently
 there is no support for scrolling</p></li>
-<li><p><strong>Out of memory error under heavy indexing</strong> right now (august 2013) there seems to be a low level issue that is causing memory to spike drastically. This can be worked around by restarting the server.</p></li>
+<li><p><strong>Out of memory error under heavy indexing</strong> Currently heavy indexing may produce and out of memory error, even with the test data that is included with Forage.
+One solution is to run Forage with the <code>--max-old-space-size=&lt;the size of your RAM&gt;</code> option. See this issue for further
+details <a href="https://github.com/rvagg/node-levelup/issues/171">https://github.com/rvagg/node-levelup/issues/171</a></p></li>
+<li><p><strong>Installation on Windows</strong> Native installation on Windows should be regarded as non-trivial. If you have the "right" python and C libs installed
+then it will work without any problems. See the section "Tested and Supported Platforms" in the
+<a href="https://github.com/rvagg/node-leveldown">levelDOWN docs</a>. Windows users who cannot/will not change their C/Python setup
+can optionally check out the <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a> package, which will
+fire up forage in a virtual machine.</p></li>
 </ul><p>Indexing and GUI is the current focus of development</p>
 
 <h1>
