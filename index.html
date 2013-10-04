@@ -29,43 +29,14 @@
       </header>
       <section>
         <h1>
-<a name="foragejs" class="anchor" href="#foragejs"><span class="octicon octicon-link"></span></a>Forage.js</h1>
-
-<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and
-<a href="https://github.com/fergiemcdowall/search-index">Search-index</a>.</p>
-
-<p><strong>Homepage:</strong> <a href="http://www.foragejs.net">http://www.foragejs.net</a></p>
-
-<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/forage">https://github.com/fergiemcdowall/forage</a></p>
-
-<p><strong>Latest StableRelease:</strong> <a href="https://github.com/fergiemcdowall/forage/releases/tag/v0.2.3">https://github.com/fergiemcdowall/forage/releases/tag/v0.2.3</a></p>
-
-<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/fergiemcdowall/forage"><img src="https://secure.travis-ci.org/fergiemcdowall/forage.png" alt="Build Status"></a></p>
-
-<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
-
-<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm-dl/forage.png" alt="NPM"></a></p>
-
-<h1>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
-
-<ul>
-<li>Full text search</li>
-<li>Stopword removal</li>
-<li>Faceting</li>
-<li>Filtering</li>
-<li>Fielded search</li>
-<li>Field weighting</li>
-<li>Relevance weighting (tf-idf)</li>
-<li>Paging (offset and resultset length)</li>
-<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
-</ul><h2>
-<a name="installing-foragejs" class="anchor" href="#installing-foragejs"><span class="octicon octicon-link"></span></a>Installing Forage.js</h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>Forage.js has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
 
-<pre><code>$ npm install forage
+<pre><code>$ npm install -g forage
 </code></pre>
+
+<p>(Forage can also be installed into the current working directory by dropping the <code>-g</code> flag)</p>
 
 <p>If everything went to plan- Forage should now be installed on your machine</p>
 
@@ -247,6 +218,31 @@ the document. filterOn will not work with string fields.</p>
 <p>Multiple field weights:</p>
 
 <p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
+
+<h1>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
+
+<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and featuring</p>
+
+<ul>
+<li>Full text search</li>
+<li>Stopword removal</li>
+<li>Faceting</li>
+<li>Filtering</li>
+<li>Fielded search</li>
+<li>Field weighting</li>
+<li>Relevance weighting (tf-idf)</li>
+<li>Paging (offset and resultset length)</li>
+<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
+</ul><p><strong>Homepage:</strong> <a href="http://www.foragejs.net">http://www.foragejs.net</a></p>
+
+<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/forage">https://github.com/fergiemcdowall/forage</a></p>
+
+<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/fergiemcdowall/forage"><img src="https://secure.travis-ci.org/fergiemcdowall/forage.png" alt="Build Status"></a></p>
+
+<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
+
+<p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm-dl/forage.png" alt="NPM"></a></p>
 
 <h1>
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known Issues</h1>
