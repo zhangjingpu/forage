@@ -28,7 +28,69 @@
         </ul>
       </header>
       <section>
-        <h1>
+        <p><strong>Table of Contents</strong>  <em>generated with <a href="http://doctoc.herokuapp.com/">DocToc</a></em></p>
+
+<ul>
+<li><a href="#forage">Forage</a></li>
+<li><a href="#installation">Installation</a></li>
+<li>
+<a href="#operation">Operation</a>
+
+<ul>
+<li>
+<a href="#start-your-foragejs-server">Start your Forage.js server</a>
+
+<ul>
+<li><a href="#startup-options">Startup options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#crawling">Crawling</a>
+
+<ul>
+<li><a href="#forage-fetch">forage-fetch</a></li>
+<li><a href="#forage-document-processor">forage-document-processor</a></li>
+<li><a href="#forage-indexer">forage-indexer</a></li>
+</ul>
+</li>
+<li>
+<a href="#indexing-api">Indexing API</a>
+
+<ul>
+<li>
+<a href="#indexing-parameters">Indexing parameters</a>
+
+<ul>
+<li><a href="#filteron">filterOn</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#search-api">Search API</a>
+
+<ul>
+<li>
+<a href="#search-parameters">Search parameters</a>
+
+<ul>
+<li><a href="#q">q</a></li>
+<li><a href="#searchfields">searchFields</a></li>
+<li><a href="#facets">facets</a></li>
+<li><a href="#filter">filter</a></li>
+<li><a href="#offset">offset</a></li>
+<li><a href="#pagesize">pagesize</a></li>
+<li><a href="#weight">weight</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#about-forage">About Forage</a></li>
+<li><a href="#known-issues">Known Issues</a></li>
+<li><a href="#license">License</a></li>
+</ul><h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>Forage.js has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
@@ -62,7 +124,7 @@ and marvel. The default port of 3000 can be modified if required.</p>
 <h3>
 <a name="startup-options" class="anchor" href="#startup-options"><span class="octicon octicon-link"></span></a>Startup options</h3>
 
-<pre><code>  $ forage --help
+<pre><code>$ forage --help
 
   Usage: forage [options]
 
@@ -73,8 +135,60 @@ and marvel. The default port of 3000 can be modified if required.</p>
       -p, --port &lt;port&gt;  specify the port, defaults to 3000
 </code></pre>
 
+<h1>
+<a name="crawling" class="anchor" href="#crawling"><span class="octicon octicon-link"></span></a>Crawling</h1>
+
+<p>Forage comes bundled with command line tools for spidering, fetching, processing and indexing webpages.</p>
+
 <h2>
-<a name="indexing" class="anchor" href="#indexing"><span class="octicon octicon-link"></span></a>Indexing</h2>
+<a name="forage-fetch" class="anchor" href="#forage-fetch"><span class="octicon octicon-link"></span></a>forage-fetch</h2>
+
+<pre><code>$ forage-fetch --help
+
+  Usage: forage-fetch [options]
+
+  Options:
+
+    -h, --help                   output usage information
+    -V, --version                output the version number
+    -d, --directory &lt;directory&gt;  specify the fetch directory,
+    -n, --hostname &lt;hostname&gt;    specify the hostname
+    -p, --protocol &lt;protocol&gt;    specify the protocol, defaults to http://
+    -s, --starturl &lt;starturl&gt;    specify the URL to start fetching from
+</code></pre>
+
+<h2>
+<a name="forage-document-processor" class="anchor" href="#forage-document-processor"><span class="octicon octicon-link"></span></a>forage-document-processor</h2>
+
+<pre><code>$ forage-document-processor --help
+
+  Usage: forage-document-processor [options]
+
+  Options:
+
+    -h, --help                                   output usage information
+    -V, --version                                output the version number
+    -f, --fetchdirectory &lt;fetchdirectory&gt;        specify the fetch directory, defaults to fetch/
+    -d, --documentdirectory &lt;documentdirectory&gt;  specify the document directory, defaults to doc/
+</code></pre>
+
+<h2>
+<a name="forage-indexer" class="anchor" href="#forage-indexer"><span class="octicon octicon-link"></span></a>forage-indexer</h2>
+
+<pre><code>$ forage-indexer --help
+
+  Usage: forage-indexer [options]
+
+  Options:
+
+    -h, --help                                   output usage information
+    -V, --version                                output the version number
+    -d, --documentdirectory &lt;documentdirectory&gt;  specify the document directory, defaults to doc/
+    -e, --endpoint &lt;endpoint&gt;                    specify the forage endpoint,
+</code></pre>
+
+<h1>
+<a name="indexing-api" class="anchor" href="#indexing-api"><span class="octicon octicon-link"></span></a>Indexing API</h1>
 
 <p>Once you have set up Forage.js, you can get some content into it. Forage comes with a JSONified version of the venerable
 Reuters-21578 test dataset in the directory <code>test/testdata</code>. To index this data cd into the directory <code>test/testdata</code> and run
@@ -121,7 +235,7 @@ strings or simple arrays.</p>
 the document. filterOn will not work with string fields.</p>
 
 <h1>
-<a name="searching" class="anchor" href="#searching"><span class="octicon octicon-link"></span></a>Searching</h1>
+<a name="search-api" class="anchor" href="#search-api"><span class="octicon octicon-link"></span></a>Search API</h1>
 
 <p>Search is available on <a href="http://localhost.com:3000/search">http://localhost.com:3000/search</a></p>
 
@@ -220,7 +334,7 @@ the document. filterOn will not work with string fields.</p>
 <p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
 
 <h1>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
+<a name="about-forage" class="anchor" href="#about-forage"><span class="octicon octicon-link"></span></a>About Forage</h1>
 
 <p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and featuring</p>
 
@@ -243,6 +357,8 @@ the document. filterOn will not work with string fields.</p>
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
 
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm-dl/forage.png" alt="NPM"></a></p>
+
+<p><a name="issues"></a></p>
 
 <h1>
 <a name="known-issues" class="anchor" href="#known-issues"><span class="octicon octicon-link"></span></a>Known Issues</h1>
