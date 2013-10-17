@@ -92,14 +92,17 @@
 </ul><h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
-<p>Forage.js has 2 dependencies- Node.js and npm (Node Package Manager). Given that these are both installed Forage can be installed by running the following command which will download and install all dependencies:</p>
+<p>Confirm that node.js is set up correctly, then install Forage like so:</p>
 
 <pre><code>$ npm install -g forage
 </code></pre>
 
-<p>(Forage can also be installed into the current working directory by dropping the <code>-g</code> flag)</p>
+<p><strong>Notes:</strong></p>
 
-<p>If everything went to plan- Forage should now be installed on your machine</p>
+<ol>
+<li>You need admin priviledges to install globally- on mac and linux use sudo: <code>$ sudo npm install -g forage</code>.</li>
+<li>Forage can also be installed into the current working directory by dropping the <code>-g</code> flag: <code>$ npm install forage</code>. Forage now exists in the <code>node_modules</code> directory. From the directory you ran the install command, type: <code>$ node_modules/forage/bin/forage</code> to start forage.</li>
+</ol><p>If everything went to plan- Forage should now be installed on your machine</p>
 
 <h1>
 <a name="operation" class="anchor" href="#operation"><span class="octicon octicon-link"></span></a>Operation</h1>
