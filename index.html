@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Forage.js by fergiemcdowall</title>
+    <title>Forage.js by foragejs</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -18,13 +18,13 @@
         <h1>Forage.js</h1>
         <p>Forage.js is an experimental search engine based on Node.js and LevelDB</p>
 
-        <p class="view"><a href="https://github.com/fergiemcdowall/forage">View the Project on GitHub <small>fergiemcdowall/forage</small></a></p>
+        <p class="view"><a href="https://github.com/foragejs/forage">View the Project on GitHub <small>foragejs/forage</small></a></p>
 
 
         <ul>
-          <li><a href="https://github.com/fergiemcdowall/forage/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/fergiemcdowall/forage/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/fergiemcdowall/forage">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/foragejs/forage/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/foragejs/forage/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/foragejs/forage">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
@@ -140,54 +140,22 @@ and marvel. The default port of 3000 can be modified if required.</p>
 <h1>
 <a name="crawling" class="anchor" href="#crawling"><span class="octicon octicon-link"></span></a>Crawling</h1>
 
-<p>Forage comes bundled with command line tools for spidering, fetching, processing and indexing webpages.</p>
+<p>Forage has command line tools for spidering, fetching, processing and indexing webpages that can be installed seperately</p>
 
 <h2>
 <a name="forage-fetch" class="anchor" href="#forage-fetch"><span class="octicon octicon-link"></span></a>forage-fetch</h2>
 
-<pre><code>$ forage-fetch --help
-
-  Usage: forage-fetch [options]
-
-  Options:
-
-    -h, --help                   output usage information
-    -V, --version                output the version number
-    -d, --directory &lt;directory&gt;  specify the fetch directory,
-    -n, --hostname &lt;hostname&gt;    specify the hostname
-    -p, --protocol &lt;protocol&gt;    specify the protocol, defaults to http://
-    -s, --starturl &lt;starturl&gt;    specify the URL to start fetching from
-</code></pre>
+<p>Get your webpages with <a href="https://github.com/foragejs/forage-fetch">forage-fetch</a></p>
 
 <h2>
 <a name="forage-document-processor" class="anchor" href="#forage-document-processor"><span class="octicon octicon-link"></span></a>forage-document-processor</h2>
 
-<pre><code>$ forage-document-processor --help
-
-  Usage: forage-document-processor [options]
-
-  Options:
-
-    -h, --help                                   output usage information
-    -V, --version                                output the version number
-    -f, --fetchdirectory &lt;fetchdirectory&gt;        specify the fetch directory, defaults to fetch/
-    -d, --documentdirectory &lt;documentdirectory&gt;  specify the document directory, defaults to doc/
-</code></pre>
+<p>Turn your fetched webpages into JSON with <a href="https://github.com/foragejs/forage-document-processor">forage-document-processor</a></p>
 
 <h2>
 <a name="forage-indexer" class="anchor" href="#forage-indexer"><span class="octicon octicon-link"></span></a>forage-indexer</h2>
 
-<pre><code>$ forage-indexer --help
-
-  Usage: forage-indexer [options]
-
-  Options:
-
-    -h, --help                                   output usage information
-    -V, --version                                output the version number
-    -d, --documentdirectory &lt;documentdirectory&gt;  specify the document directory, defaults to doc/
-    -e, --endpoint &lt;endpoint&gt;                    specify the forage endpoint,
-</code></pre>
+<p>Index your JSONified webpages with <a href="https://github.com/foragejs/forage-indexer">forage-indexer</a></p>
 
 <h1>
 <a name="indexing-api" class="anchor" href="#indexing-api"><span class="octicon octicon-link"></span></a>Indexing API</h1>
@@ -369,19 +337,15 @@ the document. filterOn will not work with string fields.</p>
 following:</p>
 
 <ul>
-<li><p><strong>The GUI (scrolling)</strong> the default GUI is very much a temporary measure. The instant search function is flaky and currently
-there is no support for scrolling</p></li>
-<li><p><strong>Out of memory error under heavy indexing</strong> Currently heavy indexing may produce and out of memory error, even with the test data that is included with Forage.
+<li><p><strong>Out of memory error under heavy indexing</strong> Currently <strong>very</strong> heavy indexing <strong>may</strong> produce and out of memory error, even with the test data that is included with Forage.
 One solution is to run Forage with the <code>--max-old-space-size=&lt;the size of your RAM&gt;</code> option. See this issue for further
-details <a href="https://github.com/rvagg/node-levelup/issues/171">https://github.com/rvagg/node-levelup/issues/171</a></p></li>
-<li><p><strong>Installation on Windows</strong> Native installation on Windows should be regarded as non-trivial. If you have the "right" python and C libs installed
-then it will work without any problems. See the section "Tested and Supported Platforms" in the
-<a href="https://github.com/rvagg/node-leveldown">levelDOWN docs</a>. Windows users who cannot/will not change their C/Python setup
-can optionally check out the <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a> package, which will
-fire up forage in a virtual machine.</p></li>
-</ul><p>Indexing and GUI is the current focus of development</p>
-
-<h1>
+details <a href="https://github.com/rvagg/node-levelup/issues/171">https://github.com/rvagg/node-levelup/issues/171</a> . If you are running some flavour of unix, try switching out <code>level</code>
+with <code>level-hyper</code>. Another solution is to restart forage between batches to free up RAM- this can be automated with
+<code>forever.js</code></p></li>
+<li><p><strong>Installation on Windows</strong> Forages underlying libraries float in and out of workingness on Windows. Although you
+<em>can</em> get Forage to work natively on Windows, its not really recommended. Thankfully, Forage can easily be virtualised
+with Vagrant- check out <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>.</p></li>
+</ul><h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>Forage.js is released under the MIT license:</p>
@@ -408,7 +372,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/fergiemcdowall">fergiemcdowall</a></p>
+        <p>This project is maintained by <a href="https://github.com/foragejs">foragejs</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
