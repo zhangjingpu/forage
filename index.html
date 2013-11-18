@@ -58,6 +58,9 @@
 <a href="#indexing-api">Indexing API</a>
 
 <ul>
+<li><a href="#document-format">Document Format</a></li>
+<li><a href="#http-interface">HTTP Interface</a></li>
+<li><a href="#forage-indexer">Forage-indexer</a></li>
 <li>
 <a href="#indexing-parameters">Indexing parameters</a>
 
@@ -84,6 +87,14 @@
 <li><a href="#weight">weight</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li>
+<a href="#matcher-api">Matcher API</a>
+
+<ul>
+<li><a href="#generating-a-matcher">Generating a matcher</a></li>
+<li><a href="#connecting-to-a-matcher">Connecting to a matcher</a></li>
 </ul>
 </li>
 <li><a href="#about-forage">About Forage</a></li>
@@ -147,30 +158,49 @@ and marvel. The default port of 3000 can be modified if required.</p>
 
 <p>Get your webpages with <a href="https://github.com/foragejs/forage-fetch">forage-fetch</a></p>
 
+<p><strong>Install:</strong></p>
+
+<p><code>$ npm install forage-fetch</code></p>
+
+<p><strong>Help:</strong></p>
+
+<p><code>$ forage-fetch -h</code> or <a href="https://github.com/foragejs/forage-fetch">read the docs</a></p>
+
 <h2>
 <a name="forage-document-processor" class="anchor" href="#forage-document-processor"><span class="octicon octicon-link"></span></a>forage-document-processor</h2>
 
 <p>Turn your fetched webpages into JSON with <a href="https://github.com/foragejs/forage-document-processor">forage-document-processor</a></p>
+
+<p><strong>Install:</strong></p>
+
+<p><code>$ npm install forage-document-processor</code></p>
+
+<p><strong>Help:</strong></p>
+
+<p><code>$ forage-document-processor -h</code> or <a href="https://github.com/foragejs/forage-document-processor">read the docs</a></p>
 
 <h2>
 <a name="forage-indexer" class="anchor" href="#forage-indexer"><span class="octicon octicon-link"></span></a>forage-indexer</h2>
 
 <p>Index your JSONified webpages with <a href="https://github.com/foragejs/forage-indexer">forage-indexer</a></p>
 
+<p><strong>Install:</strong></p>
+
+<p><code>$ npm install forage-indexer</code></p>
+
+<p><strong>Help:</strong></p>
+
+<p><code>$ forage-indexer -h</code> or <a href="https://github.com/foragejs/forage-indexer">read the docs</a></p>
+
 <h1>
 <a name="indexing-api" class="anchor" href="#indexing-api"><span class="octicon octicon-link"></span></a>Indexing API</h1>
 
-<p>Once you have set up Forage.js, you can get some content into it. Forage comes with a JSONified version of the venerable
-Reuters-21578 test dataset in the directory <code>test/testdata</code>. To index this data cd into the directory <code>test/testdata</code> and run
-the following command (note that one data file can contain an arbitralily large number of documents)</p>
+<h2>
+<a name="document-format" class="anchor" href="#document-format"><span class="octicon octicon-link"></span></a>Document Format</h2>
 
-<pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer --form filterOn=places,topics,organisations
-</code></pre>
-
-<p>If you are on a unix machine (including mac OSX), you can also run /index.sh in order to read in the entire dataset
-of 21 batch files.</p>
-
-<p>Generally Forage indexes data that is in the format</p>
+<p>Generally Forage indexes data that is in the format below, that is to say an object containing a list of key:values where the key is the document ID and the values are a futher
+list of key:values that define the fields. Fields can be called anything other than 'ID'. Field values can be either
+strings or simple arrays. Arrays can be used to create filters and facets.</p>
 
 <div class="highlight highlight-javascript"><pre><span class="p">{</span>
   <span class="s1">'doc1'</span><span class="o">:</span><span class="p">{</span>
@@ -186,9 +216,23 @@ of 21 batch files.</p>
 <span class="p">}</span>
 </pre></div>
 
-<p>That is to say an object containing a list of key:values where the key is the document ID and the values are a futher
-list of key:values that define the fields. Fields can be called anything other than 'ID'. Field values can be either
-strings or simple arrays.</p>
+<h2>
+<a name="http-interface" class="anchor" href="#http-interface"><span class="octicon octicon-link"></span></a>HTTP Interface</h2>
+
+<p>If the above was in a file called <code>data.json</code>, it could be indexed using a command like</p>
+
+<pre><code>curl --form document=@data.json http://localhost:3000/indexer --form filterOn=metedata
+</code></pre>
+
+<p>There is some test data in the test/testdata folder of the forage.js package. It can be indexed like so:</p>
+
+<pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer --form filterOn=places,topics,organisations
+</code></pre>
+
+<h2>
+<a name="forage-indexer-1" class="anchor" href="#forage-indexer-1"><span class="octicon octicon-link"></span></a>Forage-indexer</h2>
+
+<p>Forage can optionally be indexed using the <a href="#forage-indexer">forage-indexer node app</a>.</p>
 
 <h2>
 <a name="indexing-parameters" class="anchor" href="#indexing-parameters"><span class="octicon octicon-link"></span></a>Indexing parameters</h2>
@@ -304,25 +348,48 @@ the document. filterOn will not work with string fields.</p>
 <p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
 
 <h1>
+<a name="matcher-api" class="anchor" href="#matcher-api"><span class="octicon octicon-link"></span></a>Matcher API</h1>
+
+<p>Forage comes with a matcher that can be used to create autosuggest functionality. The matcher is derived from the content of the reverse index. At the moment Forage ships with one matcher,
+there is a desire to abstract this out into a framework that can accomodate mulitiple pluggable matchers.</p>
+
+<h2>
+<a name="generating-a-matcher" class="anchor" href="#generating-a-matcher"><span class="octicon octicon-link"></span></a>Generating a matcher</h2>
+
+<p>Make sure that you have some documents in your index and then run:</p>
+
+<pre><code>http://localhost:3000/generateMatcher
+</code></pre>
+
+<h2>
+<a name="connecting-to-a-matcher" class="anchor" href="#connecting-to-a-matcher"><span class="octicon octicon-link"></span></a>Connecting to a matcher</h2>
+
+<p>Using something like <a href="http://twitter.github.io/typeahead.js/">Typeahead</a> or <a href="http://jqueryui.com/autocomplete/">JQuery autocomplete</a> the matcher can be called by using this URL:</p>
+
+<pre><code>http://localhost:3000/matcher?beginsWith=&lt;matcher term&gt;
+</code></pre>
+
+<h1>
 <a name="about-forage" class="anchor" href="#about-forage"><span class="octicon octicon-link"></span></a>About Forage</h1>
 
-<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and <a href="https://github.com/fergiemcdowall/search-index">search-index</a> featuring</p>
+<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and <a href="https://github.com/foragejs/search-index">search-index</a> featuring</p>
 
 <ul>
 <li>Full text search</li>
 <li>Stopword removal</li>
 <li>Faceting</li>
 <li>Filtering</li>
+<li>Matching (Autosuggest)</li>
 <li>Fielded search</li>
 <li>Field weighting</li>
 <li>Relevance weighting (tf-idf)</li>
 <li>Paging (offset and resultset length)</li>
-<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
+<li>Virtualisation (see <a href="https://github.com/foragejs/virtual-forage">virtual-forage</a>)</li>
 </ul><p><strong>Homepage:</strong> <a href="http://www.foragejs.net">http://www.foragejs.net</a></p>
 
-<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/forage">https://github.com/fergiemcdowall/forage</a></p>
+<p><strong>Github:</strong> <a href="https://github.com/foragejs/forage">https://github.com/foragejs/forage</a></p>
 
-<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/fergiemcdowall/forage"><img src="https://secure.travis-ci.org/fergiemcdowall/forage.png" alt="Build Status"></a></p>
+<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/foragejs/forage"><img src="https://secure.travis-ci.org/foragejs/forage.png" alt="Build Status"></a></p>
 
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
 
@@ -337,14 +404,10 @@ the document. filterOn will not work with string fields.</p>
 following:</p>
 
 <ul>
-<li><p><strong>Out of memory error under heavy indexing</strong> Currently <strong>very</strong> heavy indexing <strong>may</strong> produce and out of memory error, even with the test data that is included with Forage.
-One solution is to run Forage with the <code>--max-old-space-size=&lt;the size of your RAM&gt;</code> option. See this issue for further
-details <a href="https://github.com/rvagg/node-levelup/issues/171">https://github.com/rvagg/node-levelup/issues/171</a> . If you are running some flavour of unix, try switching out <code>level</code>
-with <code>level-hyper</code>. Another solution is to restart forage between batches to free up RAM- this can be automated with
-<code>forever.js</code></p></li>
-<li><p><strong>Installation on Windows</strong> Forages underlying libraries float in and out of workingness on Windows. Although you
+<li>
+<strong>Installation on Windows</strong> Forages underlying libraries float in and out of workingness on Windows. Although you
 <em>can</em> get Forage to work natively on Windows, its not really recommended. Thankfully, Forage can easily be virtualised
-with Vagrant- check out <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>.</p></li>
+with Vagrant- check out <a href="https://github.com/foragejs/virtual-forage">virtual-forage</a>.</li>
 </ul><h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
