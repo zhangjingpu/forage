@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Forage.js by foragejs</title>
+    <title>Forage.js by fergiemcdowall</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -18,13 +18,13 @@
         <h1>Forage.js</h1>
         <p>Forage.js is an experimental search engine based on Node.js and LevelDB</p>
 
-        <p class="view"><a href="https://github.com/foragejs/forage">View the Project on GitHub <small>foragejs/forage</small></a></p>
+        <p class="view"><a href="https://github.com/fergiemcdowall/forage">View the Project on GitHub <small>fergiemcdowall/forage</small></a></p>
 
 
         <ul>
-          <li><a href="https://github.com/foragejs/forage/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/foragejs/forage/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/foragejs/forage">View On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/fergiemcdowall/forage">View On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
@@ -60,7 +60,7 @@
 <ul>
 <li><a href="#document-format">Document Format</a></li>
 <li><a href="#http-interface">HTTP Interface</a></li>
-<li><a href="#forage-indexer">Forage-indexer</a></li>
+<li><a href="#forage-indexer-1">Forage-indexer</a></li>
 <li>
 <a href="#indexing-parameters">Indexing parameters</a>
 
@@ -84,6 +84,7 @@
 <li><a href="#filter">filter</a></li>
 <li><a href="#offset">offset</a></li>
 <li><a href="#pagesize">pagesize</a></li>
+<li><a href="#teaser">teaser</a></li>
 <li><a href="#weight">weight</a></li>
 </ul>
 </li>
@@ -156,41 +157,41 @@ and marvel. The default port of 3000 can be modified if required.</p>
 <h2>
 <a name="forage-fetch" class="anchor" href="#forage-fetch"><span class="octicon octicon-link"></span></a>forage-fetch</h2>
 
-<p>Get your webpages with <a href="https://github.com/foragejs/forage-fetch">forage-fetch</a></p>
+<p>Get your webpages with <a href="https://github.com/fergiemcdowall/forage-fetch">forage-fetch</a></p>
 
 <p><strong>Install:</strong></p>
 
-<p><code>$ npm install forage-fetch</code></p>
+<p><code>$ npm install -g forage-fetch</code></p>
 
 <p><strong>Help:</strong></p>
 
-<p><code>$ forage-fetch -h</code> or <a href="https://github.com/foragejs/forage-fetch">read the docs</a></p>
+<p><code>$ forage-fetch -h</code> or <a href="https://github.com/fergiemcdowall/forage-fetch">read the docs</a></p>
 
 <h2>
 <a name="forage-document-processor" class="anchor" href="#forage-document-processor"><span class="octicon octicon-link"></span></a>forage-document-processor</h2>
 
-<p>Turn your fetched webpages into JSON with <a href="https://github.com/foragejs/forage-document-processor">forage-document-processor</a></p>
+<p>Turn your fetched webpages into JSON with <a href="https://github.com/fergiemcdowall/forage-document-processor">forage-document-processor</a></p>
 
 <p><strong>Install:</strong></p>
 
-<p><code>$ npm install forage-document-processor</code></p>
+<p><code>$ npm install -g forage-document-processor</code></p>
 
 <p><strong>Help:</strong></p>
 
-<p><code>$ forage-document-processor -h</code> or <a href="https://github.com/foragejs/forage-document-processor">read the docs</a></p>
+<p><code>$ forage-document-processor -h</code> or <a href="https://github.com/fergiemcdowall/forage-document-processor">read the docs</a></p>
 
 <h2>
 <a name="forage-indexer" class="anchor" href="#forage-indexer"><span class="octicon octicon-link"></span></a>forage-indexer</h2>
 
-<p>Index your JSONified webpages with <a href="https://github.com/foragejs/forage-indexer">forage-indexer</a></p>
+<p>Index your JSONified webpages with <a href="https://github.com/fergiemcdowall/forage-indexer">forage-indexer</a></p>
 
 <p><strong>Install:</strong></p>
 
-<p><code>$ npm install forage-indexer</code></p>
+<p><code>$ npm install -g forage-indexer</code></p>
 
 <p><strong>Help:</strong></p>
 
-<p><code>$ forage-indexer -h</code> or <a href="https://github.com/foragejs/forage-indexer">read the docs</a></p>
+<p><code>$ forage-indexer -h</code> or <a href="https://github.com/fergiemcdowall/forage-indexer">read the docs</a></p>
 
 <h1>
 <a name="indexing-api" class="anchor" href="#indexing-api"><span class="octicon octicon-link"></span></a>Indexing API</h1>
@@ -332,6 +333,18 @@ the document. filterOn will not work with string fields.</p>
 <p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5</a></p>
 
 <h3>
+<a name="teaser" class="anchor" href="#teaser"><span class="octicon octicon-link"></span></a>teaser</h3>
+
+<p><strong>(Optional)</strong> for "teaser". Use this option to generate a short paragraph that indicates where the search terms occur in the document.</p>
+
+<p>Usage:</p>
+
+<pre><code>teaser=&lt;field to generate teaser on&gt;
+</code></pre>
+
+<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body</a></p>
+
+<h3>
 <a name="weight" class="anchor" href="#weight"><span class="octicon octicon-link"></span></a>weight</h3>
 
 <p><strong>(Optional)</strong> For "weight". Use this option to tune relevancy by assigning weight to given fields. Weights can be arbitralily large.</p>
@@ -372,7 +385,7 @@ there is a desire to abstract this out into a framework that can accomodate muli
 <h1>
 <a name="about-forage" class="anchor" href="#about-forage"><span class="octicon octicon-link"></span></a>About Forage</h1>
 
-<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and <a href="https://github.com/foragejs/search-index">search-index</a> featuring</p>
+<p>Forage.js is an experimental search engine built with <a href="http://nodejs.org/">Node.js</a> and <a href="https://github.com/fergiemcdowall/search-index">search-index</a> featuring</p>
 
 <ul>
 <li>Full text search</li>
@@ -384,12 +397,12 @@ there is a desire to abstract this out into a framework that can accomodate muli
 <li>Field weighting</li>
 <li>Relevance weighting (tf-idf)</li>
 <li>Paging (offset and resultset length)</li>
-<li>Virtualisation (see <a href="https://github.com/foragejs/virtual-forage">virtual-forage</a>)</li>
+<li>Virtualisation (see <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>)</li>
 </ul><p><strong>Homepage:</strong> <a href="http://www.foragejs.net">http://www.foragejs.net</a></p>
 
-<p><strong>Github:</strong> <a href="https://github.com/foragejs/forage">https://github.com/foragejs/forage</a></p>
+<p><strong>Github:</strong> <a href="https://github.com/fergiemcdowall/forage">https://github.com/fergiemcdowall/forage</a></p>
 
-<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/foragejs/forage"><img src="https://secure.travis-ci.org/foragejs/forage.png" alt="Build Status"></a></p>
+<p><strong>Build Status Master Branch:</strong> <a href="http://travis-ci.org/fergiemcdowall/forage"><img src="https://secure.travis-ci.org/fergiemcdowall/forage.png" alt="Build Status"></a></p>
 
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
 
@@ -407,7 +420,7 @@ following:</p>
 <li>
 <strong>Installation on Windows</strong> Forages underlying libraries float in and out of workingness on Windows. Although you
 <em>can</em> get Forage to work natively on Windows, its not really recommended. Thankfully, Forage can easily be virtualised
-with Vagrant- check out <a href="https://github.com/foragejs/virtual-forage">virtual-forage</a>.</li>
+with Vagrant- check out <a href="https://github.com/fergiemcdowall/virtual-forage">virtual-forage</a>.</li>
 </ul><h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
@@ -435,7 +448,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/foragejs">foragejs</a></p>
+        <p>This project is maintained by <a href="https://github.com/fergiemcdowall">fergiemcdowall</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
