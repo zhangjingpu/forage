@@ -132,8 +132,8 @@ commands are denoted by the prefix <code>$</code> which should not be typed in</
 <pre><code>$ forage
 </code></pre>
 
-<p>Hurrah! Forage is now running locally on your machine. Head over to <a href="http://localhost:3000/">http://localhost:3000/</a>
-and marvel. The default port of 3000 can be modified if required.</p>
+<p>Hurrah! Forage is now running locally on your machine. Head over to <a href="http://localhost:3030/">http://localhost:3030/</a>
+and marvel. The default port of 3030 can be modified if required.</p>
 
 <h3>
 <a name="startup-options" class="anchor" href="#startup-options"><span class="octicon octicon-link"></span></a>Startup options</h3>
@@ -146,7 +146,7 @@ and marvel. The default port of 3000 can be modified if required.</p>
 
       -h, --help         output usage information
       -V, --version      output the version number
-      -p, --port &lt;port&gt;  specify the port, defaults to 3000
+      -p, --port &lt;port&gt;  specify the port, defaults to 3030
 </code></pre>
 
 <h1>
@@ -222,12 +222,12 @@ strings or simple arrays. Arrays can be used to create filters and facets.</p>
 
 <p>If the above was in a file called <code>data.json</code>, it could be indexed using a command like</p>
 
-<pre><code>curl --form document=@data.json http://localhost:3000/indexer --form filterOn=metedata
+<pre><code>curl --form document=@data.json http://localhost:3030/indexer --form filterOn=metedata
 </code></pre>
 
 <p>There is some test data in the test/testdata folder of the forage.js package. It can be indexed like so:</p>
 
-<pre><code>curl --form document=@reuters-000.json http://localhost:3000/indexer --form filterOn=places,topics,organisations
+<pre><code>curl --form document=@reuters-000.json http://localhost:3030/indexer --form filterOn=places,topics,organisations
 </code></pre>
 
 <h2>
@@ -252,7 +252,7 @@ the document. filterOn will not work with string fields.</p>
 <h1>
 <a name="search-api" class="anchor" href="#search-api"><span class="octicon octicon-link"></span></a>Search API</h1>
 
-<p>Search is available on <a href="http://localhost.com:3000/search">http://localhost.com:3000/search</a></p>
+<p>Search is available on <a href="http://localhost.com:3030/search">http://localhost.com:3030/search</a></p>
 
 <h2>
 <a name="search-parameters" class="anchor" href="#search-parameters"><span class="octicon octicon-link"></span></a>Search parameters</h2>
@@ -267,7 +267,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>q=&lt;query term&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow">http://localhost:3000/search?q=moscow</a></p>
+<p><a href="http://localhost:3030/search?q=moscow">http://localhost:3030/search?q=moscow</a></p>
 
 <h3>
 <a name="searchfields" class="anchor" href="#searchfields"><span class="octicon octicon-link"></span></a>searchFields</h3>
@@ -277,7 +277,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>searchFields[]=&lt;field to search in&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=plans&amp;searchFields%5B%5D=body">http://localhost:3000/search?q=plans&amp;searchFields[]=body</a></p>
+<p><a href="http://localhost:3030/search?q=plans&amp;searchFields%5B%5D=body">http://localhost:3030/search?q=plans&amp;searchFields[]=body</a></p>
 
 <h3>
 <a name="facets" class="anchor" href="#facets"><span class="octicon octicon-link"></span></a>facets</h3>
@@ -289,7 +289,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>facets=&lt;field to facet on&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics">http://localhost:3000/search?q=moscow&amp;facets=topics</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics">http://localhost:3030/search?q=moscow&amp;facets=topics</a></p>
 
 <h3>
 <a name="filter" class="anchor" href="#filter"><span class="octicon octicon-link"></span></a>filter</h3>
@@ -301,11 +301,11 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>filter[&lt;filter field&gt;][]=&lt;value&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq</a></p>
 
 <p>Multiple filters:</p>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;filter%5Btopics%5D%5B%5D=acq&amp;filter%5Bplaces%5D%5B%5D=ussr">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq&amp;filter[places][]=ussr</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;filter%5Btopics%5D%5B%5D=acq&amp;filter%5Bplaces%5D%5B%5D=ussr">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;filter[topics][]=acq&amp;filter[places][]=ussr</a></p>
 
 <h3>
 <a name="offset" class="anchor" href="#offset"><span class="octicon octicon-link"></span></a>offset</h3>
@@ -318,7 +318,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>offset=&lt;start index&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5</a></p>
 
 <h3>
 <a name="pagesize" class="anchor" href="#pagesize"><span class="octicon octicon-link"></span></a>pagesize</h3>
@@ -330,7 +330,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>pagesize=&lt;size of resultset&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5</a></p>
 
 <h3>
 <a name="teaser" class="anchor" href="#teaser"><span class="octicon octicon-link"></span></a>teaser</h3>
@@ -342,7 +342,7 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>teaser=&lt;field to generate teaser on&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;offset=5&amp;pagesize=5&amp;teaser=body</a></p>
 
 <h3>
 <a name="weight" class="anchor" href="#weight"><span class="octicon octicon-link"></span></a>weight</h3>
@@ -354,11 +354,11 @@ the document. filterOn will not work with string fields.</p>
 <pre><code>weight[&lt;field name&gt;][]:&lt;weight (factor)&gt;
 </code></pre>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10</a></p>
 
 <p>Multiple field weights:</p>
 
-<p><a href="http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3000/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
+<p><a href="http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter%5Btopics%5D%5B%5D=grain&amp;weight%5Btitle%5D%5B%5D=10&amp;weight%5Bbody%5D%5B%5D=2">http://localhost:3030/search?q=moscow&amp;facets=topics&amp;filter[topics][]=grain&amp;weight[title][]=10&amp;weight[body][]=2</a></p>
 
 <h1>
 <a name="matcher-api" class="anchor" href="#matcher-api"><span class="octicon octicon-link"></span></a>Matcher API</h1>
@@ -371,7 +371,7 @@ there is a desire to abstract this out into a framework that can accomodate muli
 
 <p>Make sure that you have some documents in your index and then run:</p>
 
-<pre><code>http://localhost:3000/generateMatcher
+<pre><code>http://localhost:3030/generateMatcher
 </code></pre>
 
 <h2>
@@ -379,7 +379,7 @@ there is a desire to abstract this out into a framework that can accomodate muli
 
 <p>Using something like <a href="http://twitter.github.io/typeahead.js/">Typeahead</a> or <a href="http://jqueryui.com/autocomplete/">JQuery autocomplete</a> the matcher can be called by using this URL:</p>
 
-<pre><code>http://localhost:3000/matcher?beginsWith=&lt;matcher term&gt;
+<pre><code>http://localhost:3030/matcher?beginsWith=&lt;matcher term&gt;
 </code></pre>
 
 <h1>
@@ -407,6 +407,8 @@ there is a desire to abstract this out into a framework that can accomodate muli
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm/forage.png?stars&amp;downloads" alt="NPM"></a></p>
 
 <p><a href="https://nodei.co/npm/forage/"><img src="https://nodei.co/npm-dl/forage.png" alt="NPM"></a></p>
+
+<p><a href="http://npm-stat.vorba.ch/charts.html?package=forage">http://npm-stat.vorba.ch/charts.html?package=forage</a></p>
 
 <p><a name="issues"></a></p>
 
